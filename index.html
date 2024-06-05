@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Character Customization</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="name">
+            Character Name:
+            <input type="text" id="fname" name="fname"><br><br>
+        </div>
+        <div class="class">
+            <button id="Warrior">Warrior</button>
+            <button id="Mage">Mage</button>
+            <button id="Bard">Bard</button>
+        </div>
+        <div class="Gender">
+            <button id="Male">Male</button>
+            <button id="Female">Female</button>
+        </div>
+        <div class="MenHair">
+            <button id="Long">Long</button>
+            <button id="Medium">Medium</button>
+            <button id="Short">Short</button>
+        </div>
+        <div class="MenEyeColor">
+            <button id="Gold">Gold</button>
+            <button id="Blue">Blue</button>
+            <button id="Red">Red</button>
+        </div>
+        <div class="HairStyle">
+            <img id="LongHair" src="images/MaleCharacter/Hair Styles&Colors/LongBlackHair.png">
+            <img id="MediumHair" src="images/MaleCharacter/Hair Styles&Colors/MediumBlackHair.png">
+            <img id="ShortHair" src="images/MaleCharacter/Hair Styles&Colors/ShortBlackHair.png">
+        </div>
+        <div class="HairColor">
+            <button id="BlackHair">Black</button>
+            <button id="BlueHair">Blue</button>
+            <button id="RedHair">Red</button>
+        </div>
+        <div class="SkinColor">
+            <button id="DarkTone">Dark</button>
+            <button id="LightBrownTone">LightBrown</button>
+            <button id="PaleWhiteTone">Pale</button>
+        </div>
+        <div class="MenSkinTone">
+            <img id="MenDarkTone" src="images/MaleCharacter/Skin Tones/DarkTone.png">
+            <img id="MenLightBrownTone" src="images/MaleCharacter/Skin Tones/LightBrownTone.png">
+            <img id="MenPaleWhiteTone" src="images/MaleCharacter/Skin Tones/PaleWhiteTone.png">
+        </div>
+        <div class="EyeColor">
+            <img id="MenGoldEye" src="images/MaleCharacter/Eye Colors/MenEyesGold.png">
+            <img id="MenBlueEye" src="images/MaleCharacter/Eye Colors/MenEyesBlue.png">
+            <img id="MenRedEye" src="images/MaleCharacter/Eye Colors/MenEyesRed.png">
+        </div>
+        <div class="image">
+            <img id="WarriorClass" src="images/RPG Class/Warrior Class.png">
+            <img id="MageClass" src="images/RPG Class/Mage Class.png">
+            <img id="BardClass" src="images/RPG Class/Bard Class.png">
+        </div>
+        <div class="character">
+            <img id="MaleCharacter" src="images/MaleCharacter/Skin Tones/PaleWhiteTone.png">
+            <img id="FemaleCharacter" src="images/FemaleCharacter/Skin Tones/PaleWhiteTone.png">
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#MageClass").hide();
+            $("#BardClass").hide();
+            $("#Warrior").click(function(){
+                $("#MageClass").hide();
+                $("#BardClass").hide();
+                $("#WarriorClass").show();
+            });
+            $("#Mage").click(function(){
+                $("#MageClass").show();
+                $("#BardClass").hide();
+                $("#WarriorClass").hide();
+            });
+            $("#Bard").click(function(){
+                $("#MageClass").hide();
+                $("#BardClass").show();
+                $("#WarriorClass").hide();
+            });
+        });
+        $(document).ready(function(){
+            $("#FemaleCharacter").hide();
+            $("#Male").click(function(){
+                $("#FemaleCharacter").hide();
+                $("#MaleCharacter").show();
+            });
+            $("#Female").click(function(){
+                $("#FemaleCharacter").show();
+                $("#MaleCharacter").hide();
+            });
+        });
+        $(document).ready(function(){
+            $("#LongHair").hide();
+            $("#MediumHair").hide();
+            $("#Short").click(function(){
+                $("#LongHair").hide();
+                $("#MediumHair").hide();
+                $("#ShortHair").show();
+            });
+            $("#Medium").click(function(){
+                $("#LongHair").hide();
+                $("#MediumHair").show();
+                $("#ShortHair").hide();
+            });
+            $("#Long").click(function(){
+                $("#LongHair").show();
+                $("#MediumHair").hide();
+                $("#ShortHair").hide();
+            });
+        });
+        $(document).ready(function(){
+            $("#MenRedEye").hide();
+            $("#MenBlueEye").hide();
+            $("#Gold").click(function(){
+                $("#MenRedEye").hide();
+                $("#MenBlueEye").hide();
+                $("#MenGoldEye").show();
+            });
+            $("#Blue").click(function(){
+                $("#MenRedEye").hide();
+                $("#MenBlueEye").show();
+                $("#MenGoldEye").hide();
+            });
+            $("#Red").click(function(){
+                $("#MenRedEye").show();
+                $("#MenBlueEye").hide();
+                $("#MenGoldEye").hide();
+            });
+        });
+        $(document).ready(function(){
+            $("#MenDarkTone").hide();
+            $("#MenLightBrownTone").hide();
+            $("#MenPaleWhiteTone").hide();
+            $("#PaleWhiteTone").click(function(){
+                $("#MenDarkTone").hide();
+                $("#MenLightBrownTone").hide();
+                $("#MenPaleWhiteTone").show();
+            });
+            $("#LightBrownTone").click(function(){
+                $("#MenDarkTone").hide();
+                $("#MenLightBrownTone").show();
+                $("#MenPaleWhiteTone").hide();
+            });
+            $("#DarkTone").click(function(){
+                $("#MenDarkTone").show();
+                $("#MenLightBrownTone").hide();
+                $("#MenPaleWhiteTone").hide();
+            });
+        });
+    </script>
+</body>
+</html>

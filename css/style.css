@@ -1,0 +1,53 @@
+html{
+    background: url(../images/CreationBackground.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(px, auto);
+  }
+.name, .class, .Gender,.HairColor, .SkinColor{
+    grid-column: 1;
+}
+.image {
+    height: 150px;
+    width: 150px;
+    z-index: 0;
+    grid-column: 2 ;
+    grid-row: 1 / span 2;
+}
+.character, .HairStyle, .EyeColor, .MenSkinTone{
+    grid-column: 2 ;
+    grid-row: 1 / span 8;
+}
+.character{
+    z-index: 1;
+}
+.MenSkinTone{
+    z-index: 2;
+}
+.HairStyle{
+    z-index: 3;
+}
+.EyeColor{
+    z-index: 4;
+}
+.MenColoredHair{
+    z-index: 5;
+}
+.image img{
+    height: 250px;
+    width: 250px;
+}
+.character img, .HairStyle img, .EyeColor img, .MenColoredHair img, .MenSkinTone img{
+    height: 450px;
+    width: 500px;
+    margin: auto;
+    display: block;
+    object-fit: contain;
+}
