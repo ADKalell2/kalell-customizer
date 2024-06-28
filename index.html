@@ -2,161 +2,520 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Character Customization</title>
+    <title>Character Sheet Creation</title>
+    <!----------Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <!----------Custom CSS File-->
+    <link rel="stylesheet" href="style.css">
+    <!---------AOS-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-----------FontAwesomeIcons-->
+        <script src="https://kit.fontawesome.com/132272fa8c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="name">
-            Character Name:
-            <input type="text" id="fname" name="fname"><br><br>
+
+  <div class="containerA">
+    <img src="Images/dnd logo.png" data-aos="zoom-in">
+  </div>
+
+  <br>
+
+  <div class="container">
+    
+    <form id="charSheet">
+    <div class="row">
+      <div class="col-4">
+        <h2 data-aos="fade-right">Player Name</h2>         
+        <input name="PlayerName" id="playerSelect" data-aos="fade-right" onchange="LoadPlayer()" list="players"/>
+        <datalist id="players"></datalist>
+
+        <br><br>
+
+        <h2 data-aos="fade-right">Character Name</h2>
+        <input name="CharacterName" id="characterSelect" data-aos="fade-right" onchange="LoadCharacter()" list="characters"/>
+        <datalist id="characters"></datalist>
+
+        <br><br>
+
+        <h2 data-aos="fade-right">Class</h2>
+        
+        <select id="classes" data-aos="fade-right" onchange="classes(this);">
+          <option value="noclass">None</option>
+          <option value="artificer">Artificer</option>
+          <option value="barbarian">Barbarian</option>
+          <option value="bard">Bard</option>
+          <option value="cleric">Cleric</option>
+          <option value="druid">Druid</option>
+          <option value="fighter">Fighter</option>
+          <option value="monk">Monk</option>
+          <option value="paladin">Paladin</option>
+          <option value="ranger">Ranger</option>
+          <option value="rogue">Rogue</option>
+          <option value="sorcerer">Sorcerer</option>
+          <option value="warlock">Warlock</option>
+          <option value="wizard">Wizard</option>
+        </select>
+
+        <br><br>
+
+        <h3 data-aos="fade-right">Subclass</h3>
+        
+        <select id="subclasses" data-aos="fade-right" onchange="subclasses(this);">
+          <option value="nosubclass">None</option>
+          <optgroup id="artificer" value="Artificer" label="Artificer">
+            <option value="alchemist">Alchemist</option>
+            <option value="armorer">Armorer</option>
+            <option value="artillerist">Artillerist</option>
+            <option value="battleSmith">Battle Smith</option>
+          </optgroup>
+          <optgroup id="barbarian" value="Barbarian" label="Barbarian">
+            <option value="guardian">Path of the Ancestral Guardian</option>
+            <option value="battlerager">Path of the Battlerager</option>
+            <option value="beast">Path of the Beast</option>
+            <option value="berserker">Path of the Berserker</option>
+            <option value="herald">Path of the Storm Herald</option>
+            <option value="warrior">Path of the Totem Warrior</option>
+            <option value="zealot">Path of the Zealot</option>
+            <option value="wild">Path of Wild Magic</option>
+          </optgroup>
+          <optgroup id="bard" value="Bard" label="Bard">
+            <option value="creation">College of Creation</option>
+            <option value="eloquence">College of Eloquence</option>
+            <option value="glamour">College of Glamour</option>
+            <option value="lore">College of Lore</option>
+            <option value="spirits">College of Spirits</option>
+            <option value="swords">College of Swords</option>
+            <option value="valor">College of Valor</option>
+            <option value="whispers">College of Whispers</option>
+          </optgroup>
+          <optgroup id="cleric" value="Cleric" label="Cleric">
+            <option value="arcana">Arcana Domain</option>
+            <option value="death">Death Domain</option>
+            <option value="forge">Forge Domain</option>
+            <option value="grave">Grave Domain</option>
+            <option value="knowledge">Knowledge Domain</option>
+            <option value="life">Life Domain</option>
+            <option value="light">Light Domain</option>
+            <option value="nature">Nature Domain</option>
+            <option value="order">Order Domain</option>
+            <option value="peace">Peace Domain</option>
+            <option value="tempest">Tempest Domain</option>
+            <option value="trickery">Trickery Domain</option>
+            <option value="twilight">Twilight Domain</option>
+            <option value="war">War Domain</option>
+          </optgroup>
+          <optgroup id="druid" value="Druid" label="Druid">
+            <option value="dreams">Circle of Dreams</option>
+            <option value="spores">Circle of Spores</option>
+            <option value="stars">Circle of Stars</option>
+            <option value="land">Circle of the Land</option>
+            <option value="moon">Circle of the Moon</option>
+            <option value="shepherd">Circle of the Shepherd</option>
+            <option value="wildfire">Circle of Wildfire</option>
+          </optgroup>
+          <optgroup id="fighter" value="Fighter" label="Fighter">
+            <option value="arcaneArcher">Arcane Archer</option>
+            <option value="battleMaster">Battle Master</option>
+            <option value="cavaliar">Cavalier</option>
+            <option value="champion">Champion</option>
+            <option value="echoKnight">Echo Knight</option>
+            <option value="eldritchKnight">Eldritch Knight</option>
+            <option value="psiWarrior">Psi Warrior</option>
+            <option value="purpleDragonknight">Purple Dragon Knight</option>
+            <option value="runeKnight">Rune Knight</option>
+            <option value="samurai">Samurai</option>
+          </optgroup>
+          <optgroup id="monk" value="Monk" label="Monk">
+            <option value="mercy">Way of Mercy</option>
+            <option value="shadow">Way of Shadow</option>
+            <option value="astralSelf">Way of the Astral Self</option>
+            <option value="drunkenMaster">Way of the Drunken Master</option>
+            <option value="fourElements">Way of the Four Elements</option>
+            <option value="kensei">Way of the Kensei</option>
+            <option value="longDeath">Way of the Long Death</option>
+            <option value="openHand">Way of the Open Hand</option>
+            <option value="sunSoul">Way of the Sun Soul</option>
+          </optgroup>
+          <optgroup id="paladin" value="Paladin" label="Paladin">
+            <option value="conquest">Oath of Conquest</option>
+            <option value="devotion">Oath of Devotion</option>
+            <option value="glory">Oath of Glory</option>
+            <option value="redemption">Oath of Redemption</option>
+            <option value="ancients">Oath of the Ancients</option>
+            <option value="crown">Oath of the Crown</option>
+            <option value="watchers">Oath of the Watchers</option>
+            <option value="vengeance">Oath of Vengeance</option>
+            <option value="oathbreaker">Oathbreaker</option>
+          </optgroup>
+          <optgroup id="ranger" value="Ranger" label="Ranger">
+            <option value="beastMaster">Beast Master</option>
+            <option value="feyWanderer">Fey Wanderer</option>
+            <option value="gloomStalker">Gloom Stalker</option>
+            <option value="horizonWalker">Horizon Walker</option>
+            <option value="hunter">Hunter</option>
+            <option value="monsterSlayer">Monster Slayer</option>
+            <option value="swarmKeeper">Swarm Keeper</option>
+          </optgroup>
+          <optgroup id="rogue" value="Rogue" label="Rogue">
+            <option value="arcaneTrickster">Arcane Trickster</option>
+            <option value="assassin">Assassin</option>
+            <option value="inquisitive">Inquisitive</option>
+            <option value="mastermind">Mastermind</option>
+            <option value="phantom">Phantom</option>
+            <option value="scout">Scout</option>
+            <option value="soulknife">Soulknife</option>
+            <option value="swashbuckler">Swashbuckler</option>
+            <option value="thief">Thief</option>
+          </optgroup>
+          <optgroup id="sorcerer" value="Sorcerer" label="Sorcerer">
+            <option value="aberrantMind">Aberrant Mind</option>
+            <option value="clockworkSoul">Clockwork Soul</option>
+            <option value="divineSoul">Divine Soul</option>
+            <option value="draconicBloodline">Draconic Bloodline</option>
+            <option value="shadowMagic">Shadow Magic</option>
+            <option value="stormSorcery">Storm Sorcery</option>
+            <option value="wildMagic">Wild Magic</option>
+          </optgroup>
+          <optgroup id="warlock" value="Warlock" label="Warlock">
+            <option value="archfey">The Archfey</option>
+            <option value="celestial">The Celestial</option>
+            <option value="fathomless">The Fathomless</option>
+            <option value="fiend">The Fiend</option>
+            <option value="genie">The Genie</option>
+            <option value="greatoldOne">The Great Old One</option>
+            <option value="hexblade">The Hexblade</option>
+            <option value="undead">The Undead</option>
+            <option value="undying">The Undying</option>
+          </optgroup>
+          <optgroup id="wizard" value="Wizard" label="Wizard">
+            <option value="bladesinging">Bladesinging</option>
+            <option value="chronurgyMagic">Chronurgy Magic</option>
+            <option value="graviturgyMagic">Graviturgy Magic</option>
+            <option value="scribes">Order of Scribes</option>
+            <option value="abjuration">School of Abjuration</option>
+            <option value="conjuration">School of Conjuration</option>
+            <option value="divination">School of Divination</option>
+            <option value="enchantment">School of Enchantment</option>
+            <option value="evocation">School of Evocation</option>
+            <option value="illusion">School of Illusion</option>
+            <option value="necromancy">School of Necromancy</option>
+            <option value="transmutation">School of Necrmancy</option>
+            <option value="warMagic">War Magic</option>
+          </optgroup>
+        </select>
+
+        <br><br>
+
+        <h2 data-aos="fade-right">Player Level</h2>
+        <input type="number" id="playerLevel" min="1" max="20" value="1" data-aos="fade-right" onchange="playerLevelChange();">
+        
+        <br><br>
+        
+        <h2 data-aos="fade-right">Ability Scores</h2>
+        
+        <br>
+        
+        <table class="table">
+          <tr>
+            <th data-aos="fade-right">Ability</th>
+            <th data-aos="fade-right">Score</th>
+            <th data-aos="fade-right">Mod</th>
+          </tr>
+          <tr>
+            <td data-aos="fade-right">Strength</td>
+            <td><input type="number" value="10" id="strScore" onchange="updateModifiers()" data-aos="fade-right"></td>
+            <td><input type="number" value="0" id="strMod" data-aos="fade-right"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-right">Dexterity</td>
+            <td><input type="number" value="10" id="dexScore" onchange="updateModifiers()" data-aos="fade-right"></td>
+            <td><input type="number" value="0" id="dexMod" data-aos="fade-right"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-right">Constitution</td>
+            <td><input type="number" value="10" id="conScore" onchange="updateModifiers()" data-aos="fade-right"></td>
+            <td><input type="number" value="0" id="conMod" data-aos="fade-right"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-right">Intelligence</td>
+            <td><input type="number" value="10" id="intScore" onchange="updateModifiers()" data-aos="fade-right"></td>
+            <td><input type="number" value="0" id="intMod" data-aos="fade-right"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-right">Wisdom</td>
+            <td><input type="number" value="10" id="wisScore" onchange="updateModifiers()" data-aos="fade-right"></td>
+            <td><input type="number" value="0" id="wisMod" data-aos="fade-right"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-right">Charisma</td>
+            <td><input type="number" value="10" id="chaScore" onchange="updateModifiers()" data-aos="fade-right"></td>
+            <td><input type="number" value="0" id="chaMod" data-aos="fade-right"></td>
+          </tr>
+        </table>
+        
+        <div class="text-center">
+        <btn class="btn btn-secondary" data-aos="fade-up" onclick="setLocalStorage();">Save Data</btn>
         </div>
-        <div class="class">
-            <button id="Warrior">Warrior</button>
-            <button id="Mage">Mage</button>
-            <button id="Bard">Bard</button>
+        
+        <br>
+
+        <div class="text-center">
+        <btn class="btn btn-secondary" data-aos="fade-up" onclick="getStoredValues();">Load Data</btn>
         </div>
-        <div class="Gender">
-            <button id="Male">Male</button>
-            <button id="Female">Female</button>
+
+      </div>
+      
+      <div class="col-4">
+        
+        <h2 data-aos="fade-in">Equipment</h2>
+        
+        <h6 data-aos="fade-in">Equipped Armor:</h6>
+        <select id="equippedArmor" data-aos="fade-in" onchange="equipArmor(this);">
+          <option value="unarmored">None</option>
+          <optgroup id="lightArmor" value="Light Armor" label="Light Armor">
+          <option value="padded">Padded</option>
+          <option value="leather">Leather</option>
+          <option value="studded">Studded Leather</option>
+          </optgroup>
+          <optgroup id="mediumArmor" value="Medium Armor" label="Medium Armor">
+          <option value="hide">Hide</option>
+          <option value="chain">Chain Shirt</option>
+          <option value="scale">Scale Mail</option>
+          <option value="breastplate">Breastplate</option>
+          <option value="halfplate">Half Plate</option>
+          </optgroup>
+          <optgroup id="heavyArmor" value="Heavy Armor" label="Heavy Armor">
+          <option value="ringmail">Ring Mail</option>
+          <option  id="chainmailArmor"value="chainmail">Chain Mail</option>
+          <option id="splintArmor" value="splint">Splint Mail</option>
+          <option id="plateArmor" value="plate">Plate Mail</option>
+          </optgroup>
+        </select>
+        
+        <br><br>
+
+        <h6 data-aos="fade-in">Equipped Weapon:</h6>
+        <select id="equippedWeapon" data-aos="fade-in" onchange="equipWeapon(this);">
+          <option value="unarmed">None</option>
+          <optgroup id="simpleWeapon" value="Simple Weapon" label="Simple Weapon">
+          <option value="club">Club</option>
+          <option value="dagger">Dagger</option>
+          <option value="greatclub">Greatclub</option>
+          <option value="handaxe">Handaxe</option>
+          <option value="javelin">Javelin</option>
+          <option value="lightHammer">Light Hammer</option>
+          <option value="mace">Mace</option>
+          <option value="quarterstaff">Quarterstaff</option>
+          <option value="sickle">Sickle</option>
+          <option value="spear">Spear</option>
+          </optgroup>
+          <optgroup id="simplerangedWeapons" value="Simple Ranged Weapons" label="Simple Ranged Weapons">
+          <option value="lightCrossbow">Light Crossbow</option>
+          <option value="dart">Dart</option>
+          <option value="shortbow">Shortbow</option>
+          <option value="sling">Sling</option>
+          </optgroup>
+          <optgroup id="martialmeleeWeapons" value="Martial Melee Weapons" label="Martial Melee Weapons">
+          <option value="battleaxe">Battleaxe</option>
+          <option  id="flail"value="flail">Flail</option>
+          <option id="glaive" value="glaive">Glaive</option>
+          <option id="greatsword" value="greatsword">Greatsword</option>
+          <option id="halberd" value="halberd">Halberd</option>
+          <option id="lance" value="lance">Lance</option>
+          <option id="longsword" value="longsword">Longsword</option>
+          <option id="maul" value="maul">Maul</option>
+          <option id="morningstar" value="morningstar">Morningstar</option>
+          <option id="pike" value="pike">Pike</option>
+          <option id="rapier" value="rapier">Rapier</option>
+          <option id="scimitar" value="scimitar">Scimitar</option>
+          <option id="shortsword" value="shortsword">Shortsword</option>
+          <option id="trident" value="trident">Trident</option>
+          <option id="warPick" value="warPick">War Pick</option>
+          <option id="warhammer" value="warhammer">Warhammer</option>
+          <option id="whip" value="whip">Whip</option>
+          </optgroup>
+          <optgroup id="martialrangedWeapons" value="Martial Ranged Weapons" label="Martial Ranged Weapons">
+            <option value="blowgun">Blowgun</option>
+            <option  id="handCrossbow"value="handCrossbow">Hand Crossbow</option>
+            <option id="heavyCrossbow" value="heavyCrossbow">Heavy Crossbow</option>
+            <option id="longbow" value="longbow">Longbow</option>
+            <option id="net" value="net">Net</option>
+          </optgroup>
+        </select>
+        
+        <br><br>
+
+        <h6 data-aos="fade-in">Equipped Shield:</h6>
+        <select id="equippedShield" data-aos="fade-in" onchange="shieldEquip(this);">
+          <option value="none">None</option>
+          <option value="shield">Shield</option>
+        </select>
+        
+        <br><br>
+        
+        <h6 data-aos="fade-in">AC:</h6>
+        <input type="number" id="armorClass" placeholder="0" data-aos="fade-in">
+        
+        <br><br>
+        
+        <div class="center-me" data-aos="fade-in">
+        <h2>Hit Points</h2>
+        <span>HP: </span>
+        <input class="stat" type="number" id="currentHP" /> / 
+        <input class="stat" type="number" id="maxHP" />
         </div>
-        <div class="MenHair">
-            <button id="Long">Long</button>
-            <button id="Medium">Medium</button>
-            <button id="Short">Short</button>
+          
+        <br>
+        
+        <div class="center-me" data-aos="fade-in">
+        <span class="btn btn-danger" onclick="takeDamage();">Damage</span>
+        <input type="number" class="stat" id="modHP" />
+        <span class="btn btn-success" onclick="healHP();">Heal</span>
         </div>
-        <div class="MenEyeColor">
-            <button id="Gold">Gold</button>
-            <button id="Blue">Blue</button>
-            <button id="Red">Red</button>
+        
+        <br>
+        
+        <div class="center-me" data-aos="fade-in">
+          <span>Hit Dice: </span><input class="stat" id="hitDice" type="number" /> / 
+          <select id="hitDie">
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
+            <option>10</option>
+            <option>12</option>
+            <option>20</option>
+          </select>
+        
+          <br><br>
+
+          <btn class="btn btn-info" onclick="shortRest();">Short Rest</btn>
+          <btn class="btn btn-success" onclick="longRest();">Long Rest</btn>
         </div>
-        <div class="HairStyle">
-            <img id="LongHair" src="images/MaleCharacter/Hair Styles&Colors/LongBlackHair.png">
-            <img id="MediumHair" src="images/MaleCharacter/Hair Styles&Colors/MediumBlackHair.png">
-            <img id="ShortHair" src="images/MaleCharacter/Hair Styles&Colors/ShortBlackHair.png">
-        </div>
-        <div class="HairColor">
-            <button id="BlackHair">Black</button>
-            <button id="BlueHair">Blue</button>
-            <button id="RedHair">Red</button>
-        </div>
-        <div class="SkinColor">
-            <button id="DarkTone">Dark</button>
-            <button id="LightBrownTone">LightBrown</button>
-            <button id="PaleWhiteTone">Pale</button>
-        </div>
-        <div class="MenSkinTone">
-            <img id="MenDarkTone" src="images/MaleCharacter/Skin Tones/DarkTone.png">
-            <img id="MenLightBrownTone" src="images/MaleCharacter/Skin Tones/LightBrownTone.png">
-            <img id="MenPaleWhiteTone" src="images/MaleCharacter/Skin Tones/PaleWhiteTone.png">
-        </div>
-        <div class="EyeColor">
-            <img id="MenGoldEye" src="images/MaleCharacter/Eye Colors/MenEyesGold.png">
-            <img id="MenBlueEye" src="images/MaleCharacter/Eye Colors/MenEyesBlue.png">
-            <img id="MenRedEye" src="images/MaleCharacter/Eye Colors/MenEyesRed.png">
-        </div>
-        <div class="image">
-            <img id="WarriorClass" src="images/RPG Class/Warrior Class.png">
-            <img id="MageClass" src="images/RPG Class/Mage Class.png">
-            <img id="BardClass" src="images/RPG Class/Bard Class.png">
-        </div>
-        <div class="character">
-            <img id="MaleCharacter" src="images/MaleCharacter/Skin Tones/PaleWhiteTone.png">
-            <img id="FemaleCharacter" src="images/FemaleCharacter/Skin Tones/PaleWhiteTone.png">
-        </div>
+        
+      </div>
+      
+      <div class="col-4">
+        <h2 data-aos="fade-left">Proficiency Bonus</h2>
+        
+        <br>
+        
+        <input type="number" id="profBonus" value="2">
+        
+        <br><br>
+        
+        <h2 data-aos="fade-left">Skills</h2>
+        
+        <table class="table">
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="acroProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Acrobatics:</td>
+            <td data-aos="fade-left"><input type="number" id="acroScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="animProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Animal Handling:</td>
+            <td data-aos="fade-left"><input type="number" id="animScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="arcaProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Arcana:</td>
+            <td data-aos="fade-left"><input type="number" id="arcaScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="athlProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Athetics:</td>
+            <td data-aos="fade-left"><input type="number" id="athlScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="decProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Deception:</td>
+            <td data-aos="fade-left"><input type="number" id="decScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="hisProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">History:</td>
+            <td data-aos="fade-left"><input type="number" id="hisScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="insProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Insight:</td>
+            <td data-aos="fade-left"><input type="number" id="insScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="intiProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Intimidation:</td>
+            <td data-aos="fade-left"><input type="number" id="intiScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="invProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Investigation:</td>
+            <td data-aos="fade-left"><input type="number" id="invScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="medProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Medicine:</td>
+            <td data-aos="fade-left"><input type="number" id="medScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="natProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Nature:</td>
+            <td data-aos="fade-left"><input type="number" id="natScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="percProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Perception:</td>
+            <td data-aos="fade-left"><input type="number" id="percScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="perfProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Performance:</td>
+            <td data-aos="fade-left"><input type="number" id="perfScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="persProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Persuasion:</td>
+            <td data-aos="fade-left"><input type="number" id="persScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="relProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Religion:</td>
+            <td data-aos="fade-left"><input type="number" id="relScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="sleiProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Sleight of Hand:</td>
+            <td data-aos="fade-left"><input type="number" id="sleiScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="steProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Stealth:</td>
+            <td data-aos="fade-left"><input type="number" id="steScore"></td>
+          </tr>
+          <tr>
+            <td data-aos="fade-left"><input type="checkbox" id="survProf" onchange="setSkills();"></td>
+            <td data-aos="fade-left">Survival:</td>
+            <td data-aos="fade-left"><input type="number" id="survScore"></td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#MageClass").hide();
-            $("#BardClass").hide();
-            $("#Warrior").click(function(){
-                $("#MageClass").hide();
-                $("#BardClass").hide();
-                $("#WarriorClass").show();
+    </form>
+  </div>
+
+  <div class="copyright">
+    <p>Created by Anthony Kalell II using HTML, CSS, & JS. Inpspiration by <i class="fa-brands fa-d-and-d"></i>. Hosted by <i class="fa-brands fa-github"></i>.</p>
+  </div>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="js/smooth-parallax.js"></script>
+    <script type="text/javascript">
+            window.addEventListener("load", function () {
+              SmoothParallax.init();
             });
-            $("#Mage").click(function(){
-                $("#MageClass").show();
-                $("#BardClass").hide();
-                $("#WarriorClass").hide();
-            });
-            $("#Bard").click(function(){
-                $("#MageClass").hide();
-                $("#BardClass").show();
-                $("#WarriorClass").hide();
-            });
-        });
-        $(document).ready(function(){
-            $("#FemaleCharacter").hide();
-            $("#Male").click(function(){
-                $("#FemaleCharacter").hide();
-                $("#MaleCharacter").show();
-            });
-            $("#Female").click(function(){
-                $("#FemaleCharacter").show();
-                $("#MaleCharacter").hide();
-            });
-        });
-        $(document).ready(function(){
-            $("#LongHair").hide();
-            $("#MediumHair").hide();
-            $("#Short").click(function(){
-                $("#LongHair").hide();
-                $("#MediumHair").hide();
-                $("#ShortHair").show();
-            });
-            $("#Medium").click(function(){
-                $("#LongHair").hide();
-                $("#MediumHair").show();
-                $("#ShortHair").hide();
-            });
-            $("#Long").click(function(){
-                $("#LongHair").show();
-                $("#MediumHair").hide();
-                $("#ShortHair").hide();
-            });
-        });
-        $(document).ready(function(){
-            $("#MenRedEye").hide();
-            $("#MenBlueEye").hide();
-            $("#Gold").click(function(){
-                $("#MenRedEye").hide();
-                $("#MenBlueEye").hide();
-                $("#MenGoldEye").show();
-            });
-            $("#Blue").click(function(){
-                $("#MenRedEye").hide();
-                $("#MenBlueEye").show();
-                $("#MenGoldEye").hide();
-            });
-            $("#Red").click(function(){
-                $("#MenRedEye").show();
-                $("#MenBlueEye").hide();
-                $("#MenGoldEye").hide();
-            });
-        });
-        $(document).ready(function(){
-            $("#MenDarkTone").hide();
-            $("#MenLightBrownTone").hide();
-            $("#MenPaleWhiteTone").hide();
-            $("#PaleWhiteTone").click(function(){
-                $("#MenDarkTone").hide();
-                $("#MenLightBrownTone").hide();
-                $("#MenPaleWhiteTone").show();
-            });
-            $("#LightBrownTone").click(function(){
-                $("#MenDarkTone").hide();
-                $("#MenLightBrownTone").show();
-                $("#MenPaleWhiteTone").hide();
-            });
-            $("#DarkTone").click(function(){
-                $("#MenDarkTone").show();
-                $("#MenLightBrownTone").hide();
-                $("#MenPaleWhiteTone").hide();
-            });
-        });
+            AOS.init();
     </script>
+    
 </body>
 </html>
