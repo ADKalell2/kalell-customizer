@@ -1,53 +1,64 @@
-html{
-    background: url(../images/CreationBackground.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: MedievalSharp, sans-serif;
 }
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(px, auto);
+
+body{
+  background: url(Images/CreationBackground.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.table input[type=number] {
+    width: 100%;
   }
-.name, .class, .Gender,.HairColor, .SkinColor{
-    grid-column: 1;
-}
-.image {
-    height: 150px;
-    width: 150px;
-    z-index: 0;
-    grid-column: 2 ;
-    grid-row: 1 / span 2;
-}
-.character, .HairStyle, .EyeColor, .MenSkinTone{
-    grid-column: 2 ;
-    grid-row: 1 / span 8;
-}
-.character{
-    z-index: 1;
-}
-.MenSkinTone{
-    z-index: 2;
-}
-.HairStyle{
-    z-index: 3;
-}
-.EyeColor{
-    z-index: 4;
-}
-.MenColoredHair{
-    z-index: 5;
-}
-.image img{
-    height: 250px;
-    width: 250px;
-}
-.character img, .HairStyle img, .EyeColor img, .MenColoredHair img, .MenSkinTone img{
-    height: 450px;
-    width: 500px;
-    margin: auto;
+  
+  .stat {
+    width:50px;
+    vertical-align:middle;
+  }
+  
+  .btn {
+    border-radius:5px;
+  }
+  
+  .center-me {
+    text-align:center;
+  }
+  
+  .dice {
+    vertical-align:middle;
+  }
+  
+  .container {
+    max-width:75%;
+  }
+  
+  select {
+    padding:4px;
+    min-width:50px;
+    vertical-align:middle;
+  }
+
+  .containerA img{
+    width: 40%;
+    height:auto;
     display: block;
-    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copyright{
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  font-weight: 300;
+  margin-top: 20px;
 }
